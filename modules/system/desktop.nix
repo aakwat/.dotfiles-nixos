@@ -12,6 +12,9 @@
 
   security.polkit.enable = true;
 
+  # Module, not package: it registers the PAM service hyprlock needs to unlock.
+  programs.hyprlock.enable = true;
+
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];

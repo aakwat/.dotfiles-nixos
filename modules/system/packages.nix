@@ -1,43 +1,17 @@
 { pkgs, ... }:
 {
-  # Every system-wide package. User tools live in modules/home.
+  # System-wide only: bootstrap tools, root's rescue editor, and what system
+  # services load. Anything the user launches lives in modules/home/packages.nix.
   environment.systemPackages = with pkgs; [
-    # base
-    git
+    git # nixos-rebuild reads the flake through it
     vim
     wget
     curl
-    gnupg
-    age
 
-    # wayland session — what config/niri/config.kdl spawns or binds
-    xwayland-satellite
-    wl-clipboard
-    cliphist
-    jq
-    waybar
-    mako
-    tofi
-    awww
-    hypridle
-    hyprlock
+    xwayland-satellite # niri session
     hyprpolkitagent
-    networkmanagerapplet
-    brightnessctl
-    playerctl
-    cava
-    swappy
-    pavucontrol
 
-    # files
-    nemo
-    nemo-fileroller
-    ffmpegthumbnailer
+    ffmpegthumbnailer # loaded by services.tumbler
     webp-pixbuf-loader
-
-    # apps
-    telegram-desktop
-    viber
-    spotify
   ];
 }
