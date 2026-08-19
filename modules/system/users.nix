@@ -16,8 +16,5 @@
       "input"
       "podman"
     ];
-    # TODO(install): passwd kwat on first boot, then delete this line.
-    # initialPassword lands in the world-readable /nix/store.
-    initialPassword = "changeme";
   };
 }

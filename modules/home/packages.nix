@@ -17,6 +17,8 @@
     btop
     htop
     jq
+    zellij
+    yazi
     gnupg
     age
 
