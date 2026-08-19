@@ -15,6 +15,7 @@
 set -euo pipefail
 
 DIR="$HOME/Pictures/Wallpapers"
+DEFAULT="$DIR/wallhaven-2e2xyx.jpg"
 STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}"
 STATE="$STATE_DIR/wallpaper"
 
@@ -40,10 +41,11 @@ case "$mode" in
         img=$(list_images | shuf -n 1)
         ;;
     restore)
-        # Use the saved wallpaper if it still exists; otherwise fall back to
-        # the FIRST image (deterministic — not random) and remember it.
+        # Saved wallpaper wins; otherwise $DEFAULT, otherwise the first image.
         if [[ -s "$STATE" ]] && img=$(<"$STATE") && [[ -f "$img" ]]; then
             :
+        elif [[ -f "$DEFAULT" ]]; then
+            img="$DEFAULT"
         else
             [[ -d "$DIR" ]] || { echo "no $DIR" >&2; exit 1; }
             img=$(list_images | head -n 1)
