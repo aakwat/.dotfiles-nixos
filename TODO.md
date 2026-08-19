@@ -83,6 +83,18 @@ sudo mv /etc/nixos /etc/nixos.bak    # unused once the flake is in charge
 sudo nix-collect-garbage -d
 ```
 
+## Maintenance
+
+`config/` is a snapshot of the Arch machine, not a live mirror. After changing
+anything there, copy it across — this is how the waybar cpucat module and the
+real LazyVim config went missing.
+
+```sh
+for d in niri waybar mako tofi kitty hypr gtk-3.0 gtk-4.0 yazi zellij nvim; do
+  diff -rq ~/.dotfiles/config/$d ~/.dotfiles-arch/.config/$d >/dev/null 2>&1 || echo "DRIFT: $d"
+done
+```
+
 ## Still open
 
 - **No disk encryption.** LUKS is install-time only, so a reinstall is the
@@ -90,8 +102,11 @@ sudo nix-collect-garbage -d
 - **Secrets**: sops-nix or agenix before the first one. Never inline —
   `/nix/store` is world-readable.
 - **fish**: aliases are in `modules/home/shell/fish.nix`. The Arch `conf.d/`
-  PATH logic (sdkman, fnm, pnpm) is not carried over — decide per project
-  whether a `flake.nix` devShell replaces it.
+  PATH logic (sdkman, fnm, pnpm) is not carried over. No direnv by choice —
+  run `nix develop` in a project when you want its toolchain, `exit` when
+  you don't.
+- **kitty `shell`**: this repo has `shell zellij attach -c main` active;
+  on Arch that line is commented out and `shell .` is used. Pick one.
 - **`backupFileExtension = "hm-bak"`** in `flake.nix` silently renames
   colliding files. With `force-clean-config` around, failing loudly may be
   better.

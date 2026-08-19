@@ -84,6 +84,9 @@ Packages are declared in exactly two files: `modules/system/packages.nix`
 `config/` is linked out-of-store, so editing a file there takes effect
 immediately. Adding or removing a file needs a rebuild.
 
+It is also a snapshot of the author's Arch setup, not a live mirror — see the
+drift check in `TODO.md`.
+
 ## Security
 
 `modules/system/security.nix`: sudo-rs, locked boot command line,
