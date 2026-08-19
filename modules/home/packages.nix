@@ -32,6 +32,8 @@
     brightnessctl
     playerctl
     cava
+    impala # waybar wifi action
+    bluetuith # waybar bluetooth action
     swappy
     pavucontrol
     networkmanagerapplet
