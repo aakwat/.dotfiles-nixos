@@ -27,5 +27,8 @@ in
     ".local/bin/screenshot".source = link "scripts/screenshot.sh";
     ".local/bin/cava-waybar".source = link "scripts/cava-waybar.sh";
     ".local/bin/audit-security".source = link "scripts/audit-security.sh";
+    ".local/bin/force-clean-config".source = link "scripts/force-clean-config.sh";
+
+    "Pictures/Wallpapers".source = link "wallpapers";
   };
 }
