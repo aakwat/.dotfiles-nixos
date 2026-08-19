@@ -105,8 +105,6 @@ done
   PATH logic (sdkman, fnm, pnpm) is not carried over. No direnv by choice —
   run `nix develop` in a project when you want its toolchain, `exit` when
   you don't.
-- **kitty `shell`**: this repo has `shell zellij attach -c main` active;
-  on Arch that line is commented out and `shell .` is used. Pick one.
 - **`backupFileExtension = "hm-bak"`** in `flake.nix` silently renames
   colliding files. With `force-clean-config` around, failing loudly may be
   better.
