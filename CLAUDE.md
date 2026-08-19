@@ -62,9 +62,20 @@ tree, not `/nix/store`. So:
   or removing one does need a rebuild, because the link table changes.
 - The repo must stay at `~/.dotfiles` or every link dangles.
 
-These files are mirrored from the author's Arch setup. KDL, JSONC, TOML and
-Lua stay in their own formats — porting them into Nix option syntax was tried
-and reverted.
+`wallpapers/` is linked the same way, to `~/Pictures/Wallpapers`.
+
+These files are a *snapshot* of the author's Arch setup, not a live mirror —
+changes made on the Arch machine must be copied across. That is how a waybar
+module went missing once. To find drift:
+
+```sh
+for d in niri waybar mako tofi kitty hypr gtk-3.0 gtk-4.0 yazi zellij; do
+  diff -rq ~/.dotfiles/config/$d ~/.dotfiles-arch/.config/$d >/dev/null 2>&1 || echo "DRIFT: $d"
+done
+```
+
+KDL, JSONC, TOML and Lua stay in their own formats — porting them into Nix
+option syntax was tried and reverted.
 
 **A home-manager `programs.*` module that writes the same path as a symlink
 collides at activation.** `programs.kitty` and `programs.neovim` are therefore

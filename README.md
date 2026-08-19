@@ -59,6 +59,7 @@ as a Signing key. Verify with `ssh -T git@github.com`.
 | `nix search nixpkgs <name>` | find a package |
 | `nix shell nixpkgs#<name>` | run something without installing it |
 | `audit-security [path]` | scan a repo: secrets, dependency CVEs, SAST |
+| `force-clean-config` | delete ~/.config entries that block activation |
 | `nix-collect-garbage -d` | reclaim disk (weekly GC is already on) |
 
 A broken boot picks the previous generation from the boot menu. That is the
@@ -74,6 +75,7 @@ modules/system/        audio desktop locale network nix packages security
 modules/home/          packages links · shell/ · desktop/ · programs/
 config/                raw app configs, symlinked into ~/.config
 scripts/               helper scripts, symlinked into ~/.local/bin
+wallpapers/            symlinked to ~/Pictures/Wallpapers
 ```
 
 Packages are declared in exactly two files: `modules/system/packages.nix`

@@ -89,8 +89,9 @@ sudo nix-collect-garbage -d
   only way to add it. Biggest remaining gap for a laptop.
 - **Secrets**: sops-nix or agenix before the first one. Never inline —
   `/nix/store` is world-readable.
-- **`config/fish/` not mirrored** from Arch: no abbrs, no sdkman/fnm PATH.
-  Decide what is still wanted here.
+- **fish**: aliases are in `modules/home/shell/fish.nix`. The Arch `conf.d/`
+  PATH logic (sdkman, fnm, pnpm) is not carried over — decide per project
+  whether a `flake.nix` devShell replaces it.
 - **`backupFileExtension = "hm-bak"`** in `flake.nix` silently renames
   colliding files. With `force-clean-config` around, failing loudly may be
   better.
