@@ -69,7 +69,7 @@ A saved state wins over `DEFAULT`, so clear it once to pick up
 
 ```sh
 loginctl lock-session      # hyprlock must let you back in (PAM)
-resolvectl status          # with WARP connected — see which DNS wins
+resolvectl status          # expect DNSOverTLS=yes, DNSSEC=allow-downgrade
 ```
 
 - Ctrl+Space toggles the Myanmar (`mm`) keyboard layout

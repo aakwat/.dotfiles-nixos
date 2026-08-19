@@ -7,6 +7,4 @@
     allowedTCPPorts = [ ];
     allowedUDPPorts = [ ];
   };
-
-  services.cloudflare-warp.enable = true;
 }
