@@ -1,0 +1,13 @@
+// Bare layout — no tab-bar, no status-bar. Just panes.
+// Pair with `default_layout "bare"` in config.kdl.
+// For occasional access to tips, bind a key to open a new tab with
+// the built-in "default" layout (see config.kdl keybinds).
+layout {
+  default_tab_template {
+    children
+  }
+
+  tab name="main" focus=true {
+    pane
+  }
+}

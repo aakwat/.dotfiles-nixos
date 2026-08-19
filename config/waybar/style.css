@@ -1,0 +1,84 @@
+/* Waybar — flat, borderless, gruvbox grays (mirrors tofi theme). */
+
+* {
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: rgba(29, 32, 33, 0.9);
+  color: #a89984;
+  border: none;
+  box-shadow: none;
+}
+
+/* strip all module box/pill styling — flat text */
+#workspaces button,
+#submap,
+#battery,
+#bluetooth,
+#backlight,
+#custom-keyboard,
+#network,
+#cpu,
+#memory,
+#pulseaudio,
+#volume,
+#custom-media-animation,
+#custom-media-time,
+#clock,
+#tray {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 0 8px;
+  color: #a89984;
+  transition: color 200ms ease, background-color 200ms ease;
+}
+
+#battery:hover,
+#bluetooth:hover,
+#backlight:hover,
+#custom-keyboard:hover,
+#network:hover,
+#cpu:hover,
+#memory:hover,
+#pulseaudio:hover,
+#clock:hover,
+#custom-media-animation:hover,
+#custom-media-time:hover,
+#workspaces button:hover {
+  color: #fbf1c7;
+  background-color: rgba(235, 219, 178, 0.10);
+}
+
+/* workspaces */
+#workspaces button.active { color: #fe8019; background-color: rgba(254, 128, 25, 0.12); }
+#workspaces button.urgent { color: #fb4934; }
+
+/* clock (center accent) */
+#clock { color: #ebdbb2; }
+
+/* media bars */
+#custom-media-animation { color: #fe8019; font-size: 13px; }
+#custom-media-time      { color: #7c6f64; font-size: 13px; }
+
+/* battery states */
+#battery.warning  { color: #fabd2f; }
+#battery.critical { color: #fb4934; }
+
+/* volume slider (kept, if used) */
+#pulseaudio-slider trough    { min-height: 6px; min-width: 60px; background: #3c3836; border-radius: 3px; }
+#pulseaudio-slider highlight { background: #a89984; border-radius: 3px; }
+#pulseaudio-slider slider    { all: unset; opacity: 0; }
+
+tooltip {
+  background: #1d2021;
+  border: 1px solid #504945;
+  border-radius: 4px;
+}
+tooltip label { color: #ebdbb2; padding: 4px; }

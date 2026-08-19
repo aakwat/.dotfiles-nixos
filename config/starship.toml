@@ -1,0 +1,307 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[┌──\\(](bold fg:color_blue)\
+$username\
+[@](bold fg:color_blue)\
+$hostname\
+[\\)─\\[](bold fg:color_blue)\
+$directory\
+[\\] ](bold fg:color_blue)\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$git_metrics\
+$c\
+$rust\
+$golang\
+$nodejs\
+$bun\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+$lua\
+$ruby\
+$nix_shell\
+$conda\
+$docker_context\
+$kubernetes\
+$direnv\
+$env_var\
+$line_break\
+[└─](bold fg:color_blue)\
+$character"""
+
+# Right-prompt: status / duration / jobs / clock.
+right_format = """
+$status\
+$cmd_duration\
+$jobs\
+$time"""
+
+add_newline = true
+palette     = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_fg0    = '#fbf1c7'
+color_dim    = '#928374'
+color_blue   = '#83a598'
+color_aqua   = '#8ec07c'
+color_green  = '#b8bb26'
+color_orange = '#fe8019'
+color_purple = '#d3869b'
+color_red    = '#fb4934'
+color_yellow = '#fabd2f'
+
+# ── OS ───────────────────────────────────────────────────────────
+[os]
+disabled = false
+style    = "fg:color_orange"
+format   = '[$symbol ]($style)'
+
+[os.symbols]
+Windows          = "\U000F0372"  # 󰍲
+Ubuntu           = "\U000F0548"  # 󰕈
+SUSE             = ""      #
+Raspbian         = "\U000F043F"  # 󰐿
+Mint             = "\U000F08ED"  # 󰣭
+Macos            = "\U000F0035"  # 󰀵
+Manjaro          = ""      #
+Linux            = "\U000F033D"  # 󰌽
+Gentoo           = "\U000F08E8"  # 󰣨
+Fedora           = "\U000F08DB"  # 󰣛
+Alpine           = ""      #
+Amazon           = ""      #
+Android          = ""      #
+Arch             = "\U000F08C7"  # 󰣇
+Artix            = "\U000F08C7"  # 󰣇
+EndeavourOS      = ""      #
+CentOS           = ""      #
+Debian           = "\U000F08DA"  # 󰣚
+Redhat           = "\U000F111B"  # 󱄛
+RedHatEnterprise = "\U000F111B"  # 󱄛
+Pop              = ""      #
+
+# ── User ─────────────────────────────────────────────────────────
+[username]
+show_always = true
+style_user  = "bold fg:color_fg0"
+style_root  = "bold fg:color_red"
+format      = '[$user]($style)'
+
+[hostname]
+ssh_only = false
+style    = "bold fg:color_fg0"
+format   = '[$hostname]($style)'
+
+# ── Directory ────────────────────────────────────────────────────
+[directory]
+style              = "bold fg:color_fg0"
+format             = '[$path]($style)[$read_only]($read_only_style)'
+read_only          = " "    #
+read_only_style    = "fg:color_red"
+truncation_length  = 1
+truncation_symbol  = "…/"    # …/
+truncate_to_repo   = true
+home_symbol        = "~"
+
+[directory.substitutions]
+"Documents" = "\U000F0219 "       # 󰈙
+"Downloads" = " "           #
+"Music"     = "\U000F075A "       # 󰝚
+"Pictures"  = " "           #
+"Developer" = "\U000F0C8B "       # 󰲋
+
+# ── Git ──────────────────────────────────────────────────────────
+[git_branch]
+symbol = " "                #
+style  = "fg:color_aqua"
+format = '[on $symbol$branch]($style) '
+
+[git_commit]
+commit_hash_length = 7
+tag_disabled       = false
+tag_symbol         = "  "   #
+style              = "fg:color_aqua"
+format             = '[\($hash$tag\)]($style) '
+only_detached      = true
+
+[git_state]
+style                = "fg:color_yellow"
+format               = '[\($state( $progress_current/$progress_total)\)]($style) '
+rebase               = "REBASING"
+merge                = "MERGING"
+revert               = "REVERTING"
+cherry_pick          = "PICKING"
+bisect               = "BISECTING"
+am                   = "AM"
+am_or_rebase         = "AM/REBASE"
+
+[git_status]
+style          = "fg:color_orange"
+format         = '([\[$all_status$ahead_behind\]]($style)) '
+conflicted     = "=${count}"
+ahead          = "↑${count}"      # ↑
+behind         = "↓${count}"      # ↓
+diverged       = "⇅${count}"      # ⇅
+up_to_date     = ""
+untracked      = "?${count}"
+stashed        = '\$${count}'
+modified       = "!${count}"
+staged         = "+${count}"
+renamed        = "»${count}"      # »
+deleted        = "✘${count}"      # ✘
+
+[git_metrics]
+disabled      = false
+added_style   = "fg:color_green"
+deleted_style = "fg:color_red"
+format        = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+only_nonzero_diffs = true
+
+# ── Languages ────────────────────────────────────────────────────
+[nodejs]
+symbol  = ""                #
+style   = "fg:color_green"
+format  = '[via $symbol $version]($style) '
+version_format = "v${raw}"
+
+[bun]
+symbol = ""                 #
+style  = "fg:color_green"
+format = '[via $symbol $version]($style) '
+
+[c]
+symbol = " "                #
+style  = "fg:color_blue"
+format = '[via $symbol$version]($style) '
+
+[rust]
+symbol = ""                 #
+style  = "fg:color_orange"
+format = '[via $symbol $version]($style) '
+
+[golang]
+symbol = ""                 #
+style  = "fg:color_blue"
+format = '[via $symbol $version]($style) '
+
+[php]
+symbol = ""                 #
+style  = "fg:color_purple"
+format = '[via $symbol $version]($style) '
+
+[java]
+symbol = ""                 #
+style  = "fg:color_red"
+format = '[via $symbol $version]($style) '
+
+[kotlin]
+symbol = ""                 #
+style  = "fg:color_purple"
+format = '[via $symbol $version]($style) '
+
+[haskell]
+symbol = ""                 #
+style  = "fg:color_purple"
+format = '[via $symbol $version]($style) '
+
+[python]
+symbol = ""                 #
+style  = "fg:color_yellow"
+format = '[via $symbol $version( \($virtualenv\))]($style) '
+
+[lua]
+symbol = ""                 #
+style  = "fg:color_blue"
+format = '[via $symbol $version]($style) '
+
+[ruby]
+symbol = ""                 #
+style  = "fg:color_red"
+format = '[via $symbol $version]($style) '
+
+# ── Containers / envs ────────────────────────────────────────────
+[docker_context]
+symbol = " "                #
+style  = "fg:color_blue"
+format = '[via $symbol$context]($style) '
+only_with_files = true
+
+[kubernetes]
+disabled = false
+symbol   = "☸ "              # ☸
+style    = "fg:color_purple"
+format   = '[$symbol$context( \($namespace\))]($style) '
+
+[nix_shell]
+symbol = " "                #
+style  = "fg:color_blue"
+format = '[via $symbol$state( \($name\))]($style) '
+
+[conda]
+symbol = "\U000F0BC2 "            # 󰯂
+style  = "fg:color_green"
+format = '[$symbol$environment]($style) '
+ignore_base = false
+
+[direnv]
+disabled        = false
+symbol          = "\U000F0BC2 "   # 󰯂
+style           = "fg:color_aqua"
+format          = '[$symbol$loaded/$allowed]($style) '
+loaded_msg      = "loaded"
+unloaded_msg    = "unloaded"
+allowed_msg     = "allowed"
+not_allowed_msg = "denied"
+denied_msg      = "denied"
+
+[env_var.VIRTUAL_ENV]
+variable = "VIRTUAL_ENV"
+style    = "fg:color_yellow"
+format   = '[(venv:$env_value) ]($style)'
+
+# ── Right-prompt modules ─────────────────────────────────────────
+[status]
+disabled        = false
+symbol          = ""       #
+success_symbol  = ""
+not_executable_symbol = ""  #
+not_found_symbol      = ""  #
+sigint_symbol         = "↯"  # ↯
+signal_symbol         = "⚡"  # ⚡
+style    = "fg:color_red"
+format   = '[$symbol $common_meaning$signal_name$maybe_int]($style) '
+map_symbol            = true
+pipestatus            = true
+
+[cmd_duration]
+min_time         = 2000          # ms
+show_milliseconds = false
+style            = "fg:color_yellow"
+format           = '[took  $duration]($style) '   #
+
+[jobs]
+symbol     = " "            #
+style      = "fg:color_purple"
+format     = '[$symbol$number]($style) '
+threshold  = 1
+symbol_threshold = 1
+
+[time]
+disabled    = false
+time_format = "%I:%M %p"
+style       = "fg:color_dim"
+format      = '[ $time]($style)'   #
+
+# ── Misc ─────────────────────────────────────────────────────────
+[line_break]
+disabled = false
+
+[character]
+success_symbol = '[\$](bold fg:color_green)'
+error_symbol   = '[\$](bold fg:color_red)'
+vimcmd_symbol  = '[\$](bold fg:color_blue)'

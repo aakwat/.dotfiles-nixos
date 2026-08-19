@@ -1,0 +1,14 @@
+result
+result-*
+*.hm-bak
+
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*credentials*
+*secret*
+*token*
+.env
+.env.*

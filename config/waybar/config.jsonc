@@ -1,0 +1,160 @@
+{
+  "layer": "top",
+  "modules-left": [
+    "niri/workspaces",
+    "group/media"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "group/volume",
+    "battery",
+    "bluetooth",
+    "backlight",
+    "custom/keyboard",
+    "network",
+    "cpu",
+    "memory"
+  ],
+  "niri/window": {
+    "max-length": 50
+  },
+  "battery": {
+    "interval": 60,
+    "format": "{capacity}% {icon}",
+    "format-icons": {
+      "default": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      "charging": [
+        "󰢟",
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ]
+    }
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "",
+    "format-connected": " {num_connections}",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "kitty -e bluetuith"
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "  {}%",
+    "max-length": 10,
+    "on-click": "kitty --title btop -e btop"
+  },
+  "memory": {
+    "interval": 30,
+    "format": "  {percentage}%",
+    "tooltip-format": "{used:0.1f}G/{total:0.1f}G used",
+    "on-click": "kitty --title htop -e htop"
+  },
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠",
+      "󰃡"
+    ],
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-",
+    "tooltip": false
+  },
+  "custom/keyboard": {
+    "exec": "niri msg -j keyboard-layouts | jq -r '.names[.current_idx] | if test(\"US|English\") then \"US\" elif test(\"Burmese|mm\") then \"MM\" else .[0:2] end'",
+    "format": "  {}",
+    "interval": 2,
+    "tooltip": false,
+    "on-click": "niri msg action switch-layout next"
+  },
+  "network": {
+    "format": " ",
+    "format-wifi": " ",
+    "format-ethernet": " ",
+    "format-disconnected": "󰤭 ",
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗 ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+    "tooltip-format-ethernet": "{ifname}  ",
+    "tooltip-format-disconnected": "󰖪 ",
+    "max-length": 50,
+    "on-click": "kitty --title impala -e impala"
+  },
+  "clock": {
+    "format": "{:%a, %d. %b %I:%M %p}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "format": {
+        "today": "<span color='#75f1fa'><b>{}</b></span>"
+      }
+    }
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 1,
+    "ignored-sinks": [
+      "Easy Effects Sink"
+    ],
+    "on-click": "pavucontrol"
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+  "group/volume": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "pulseaudio/slider"
+    ]
+  },
+  "group/media": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/media-animation"
+      // "custom/media-time"
+    ]
+  },
+  "custom/media-animation": {
+    "exec": "~/.config/waybar/custom_modules/media/media-animation.sh",
+    "tooltip": false
+  },
+  "custom/media-time": {
+    "exec": "~/.config/waybar/custom_modules/media/media-time.sh",
+    "escape": true,
+    "interval": 1,
+    "tooltip": false
+  }
+}

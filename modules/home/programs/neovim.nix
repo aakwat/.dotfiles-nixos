@@ -1,22 +1,12 @@
 { pkgs, ... }:
-
 {
-  programs.neovim = {
-    enable = true;
-    withPython3 = false;
-    withRuby = false;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
+  # No programs.neovim: config/nvim is LazyVim, symlinked by links.nix, and
+  # the module would write into the same directory.
+  home.packages = with pkgs; [
+    neovim
+    lua-language-server
+    stylua
+  ];
 
-    extraPackages = with pkgs; [
-      lua-language-server
-      stylua
-    ];
-  };
-
-  xdg.configFile."nvim" = {
-    source = ../../../config/nvim;
-    recursive = true;
-  };
+  home.sessionVariables.EDITOR = "nvim";
 }

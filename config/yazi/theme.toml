@@ -1,0 +1,113 @@
+# yazi — Gruvbox Dark Hard
+# Palette anchors (match kitty/waybar):
+#   bg  #1d2021   fg  #ebdbb2
+#   red #fb4934   green #b8bb26   yellow #fabd2f
+#   blue #83a598  purple #d3869b  aqua #8ec07c  orange #fe8019
+
+[mgr]
+cwd = { fg = "#fe8019" }
+
+hovered         = { fg = "#1d2021", bg = "#fe8019" }
+preview_hovered = { underline = true }
+
+find_keyword  = { fg = "#fabd2f", italic = true }
+find_position = { fg = "#fe8019", bg = "reset", italic = true }
+
+marker_copied   = { fg = "#b8bb26", bg = "#b8bb26" }
+marker_cut      = { fg = "#fb4934", bg = "#fb4934" }
+marker_marked   = { fg = "#8ec07c", bg = "#8ec07c" }
+marker_selected = { fg = "#fabd2f", bg = "#fabd2f" }
+
+tab_active   = { fg = "#1d2021", bg = "#fe8019" }
+tab_inactive = { fg = "#a89984", bg = "#3c3836" }
+tab_width    = 1
+
+count_copied   = { fg = "#1d2021", bg = "#b8bb26" }
+count_cut      = { fg = "#1d2021", bg = "#fb4934" }
+count_selected = { fg = "#1d2021", bg = "#fabd2f" }
+
+border_symbol = "│"
+border_style  = { fg = "#504945" }
+
+syntect_theme = ""
+
+[mode]
+normal_main = { fg = "#1d2021", bg = "#fe8019", bold = true }
+normal_alt  = { fg = "#fe8019", bg = "#3c3836" }
+select_main = { fg = "#1d2021", bg = "#b8bb26", bold = true }
+select_alt  = { fg = "#b8bb26", bg = "#3c3836" }
+unset_main  = { fg = "#1d2021", bg = "#fb4934", bold = true }
+unset_alt   = { fg = "#fb4934", bg = "#3c3836" }
+
+[status]
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "#3c3836", bg = "#3c3836" }
+
+progress_label  = { fg = "#fbf1c7", bold = true }
+progress_normal = { fg = "#fe8019", bg = "#3c3836" }
+progress_error  = { fg = "#fb4934", bg = "#3c3836" }
+
+permissions_t = { fg = "#83a598" }
+permissions_r = { fg = "#fabd2f" }
+permissions_w = { fg = "#fb4934" }
+permissions_x = { fg = "#b8bb26" }
+permissions_s = { fg = "#a89984" }
+
+[input]
+border   = { fg = "#fe8019" }
+title    = {}
+value    = {}
+selected = { reversed = true }
+
+[confirm]
+border  = { fg = "#fe8019" }
+title   = { fg = "#fe8019" }
+content = {}
+list    = {}
+btn_yes = { reversed = true }
+btn_no  = {}
+
+[pick]
+border   = { fg = "#fe8019" }
+active   = { fg = "#fe8019", bold = true }
+inactive = {}
+
+[cmp]
+border   = { fg = "#fe8019" }
+active   = { reversed = true }
+inactive = {}
+
+[tasks]
+border  = { fg = "#fe8019" }
+title   = {}
+hovered = { underline = true }
+
+[which]
+mask            = { bg = "#1d2021" }
+cand            = { fg = "#8ec07c" }
+rest            = { fg = "#a89984" }
+desc            = { fg = "#fe8019" }
+separator       = "  "
+separator_style = { fg = "#504945" }
+
+[help]
+on      = { fg = "#fe8019" }
+run     = { fg = "#8ec07c" }
+hovered = { reversed = true, bold = true }
+footer  = { fg = "#1d2021", bg = "#a89984" }
+
+[notify]
+title_info  = { fg = "#83a598" }
+title_warn  = { fg = "#fabd2f" }
+title_error = { fg = "#fb4934" }
+
+icon_info  = ""
+icon_warn  = ""
+icon_error = ""
+
+[spot]
+border   = { fg = "#fe8019" }
+title    = { fg = "#fe8019" }
+tbl_col  = { fg = "#fabd2f", bold = true }
+tbl_cell = { fg = "#fe8019", reversed = true }

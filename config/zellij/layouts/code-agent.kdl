@@ -1,0 +1,14 @@
+layout {
+  tab name="main" {
+    pane split_direction="vertical" {
+      pane name="agent" size="30%"
+
+      pane name="code" size="70%" {
+        pane split_direction="horizontal" {
+          pane name="editor"
+          pane name="terminal" size="30%"
+        }
+      }
+    }
+  }
+}

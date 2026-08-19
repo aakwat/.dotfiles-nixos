@@ -1,0 +1,36 @@
+# mako notification daemon — https://github.com/emersion/mako
+# Reloaded with `makoctl reload`. Started by hypr autostart (`try("mako")`).
+#
+# The whole point of this file: mako's built-in default-timeout is 0, which
+# means notifications NEVER auto-dismiss. Setting it makes them disappear.
+
+# Auto-dismiss after 5s (milliseconds). 0 would mean "stay forever".
+default-timeout=5000
+
+# Honor app-requested timeouts instead of forcing ours. Set to 1 to always
+# use default-timeout regardless of what the sending app asks for.
+ignore-timeout=0
+
+max-visible=5
+layer=overlay
+anchor=top-right
+
+# --- appearance (dark, rounded) ---
+font=JetBrainsMono Nerd Font 11
+width=360
+height=120
+margin=10
+padding=12
+border-size=2
+border-radius=10
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+
+[urgency=low]
+border-color=#6c7086
+default-timeout=4000
+
+[urgency=high]
+border-color=#f38ba8
+default-timeout=0

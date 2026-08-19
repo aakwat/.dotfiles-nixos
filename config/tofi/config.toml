@@ -1,0 +1,12 @@
+[base]
+mode  = "drun"
+theme = "gruvbox.toml"
+
+[matching]
+algorithm = "prefix"
+
+[history]
+history = true
+
+[logging]
+level = "error"

@@ -1,16 +1,17 @@
-{ config, pkgs, ... }:
-
+{ ... }:
 {
   imports = [
-    ./core.nix
+    ./packages.nix
+    ./links.nix
 
     ./shell/fish.nix
     ./shell/starship.nix
     ./shell/kitty.nix
 
-    ./desktop/niri.nix
-    ./desktop/tofi.nix
+    ./desktop/theme.nix
 
+    ./programs/git.nix
+    ./programs/ssh.nix
     ./programs/librewolf.nix
     ./programs/neovim.nix
   ];
