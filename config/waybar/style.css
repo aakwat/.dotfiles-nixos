@@ -64,6 +64,13 @@ window#waybar {
 #clock { color: #ebdbb2; }
 
 /* media bars */
+#custom-cpucat {
+  font-family: "Waycat", monospace;
+  font-size: 22px;
+  color: #ebdbb2;
+  padding: 0 8px;
+}
+
 #custom-media-animation { color: #fe8019; font-size: 13px; }
 #custom-media-time      { color: #7c6f64; font-size: 13px; }
 

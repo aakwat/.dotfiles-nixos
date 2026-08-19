@@ -2,6 +2,7 @@
   "layer": "top",
   "modules-left": [
     "niri/workspaces",
+    "custom/cpucat",
     "group/media"
   ],
   "modules-center": [
@@ -146,6 +147,10 @@
       "custom/media-animation"
       // "custom/media-time"
     ]
+  },
+  "custom/cpucat": {
+    "exec": "~/.config/waybar/custom_modules/catloop.sh",
+    "tooltip": false
   },
   "custom/media-animation": {
     "exec": "~/.config/waybar/custom_modules/media/media-animation.sh",
