@@ -1,0 +1,14 @@
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
+
+.luarc.json
+.luarc.gen.json
+.netrwhist
+spell/
+lazy-lock.json.bak

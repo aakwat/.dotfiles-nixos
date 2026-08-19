@@ -51,3 +51,6 @@ require("lazy").setup({
     },
   },
 })
+
+require("pets").setup({
+})
