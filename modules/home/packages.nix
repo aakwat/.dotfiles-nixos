@@ -46,5 +46,6 @@
     viber
     spotify
     libreoffice-fresh
+    proton-vpn
   ];
 }
