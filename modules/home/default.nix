@@ -21,5 +21,8 @@
   home.homeDirectory = "/home/kwat";
   home.stateVersion = "25.11";
 
+  # links.nix puts scripts here; no NixOS profile covers it.
+  home.sessionPath = [ "$HOME/.local/bin" ];
+
   programs.home-manager.enable = true;
 }

@@ -98,8 +98,8 @@ done
 
 ## Still open
 
-- **No disk encryption.** LUKS is install-time only, so a reinstall is the
-  only way to add it. Biggest remaining gap for a laptop.
+- **No disk encryption** — deferred by choice. LUKS is install-time only, so
+  adding it later means a reinstall. Still the biggest gap for a laptop.
 - **Secrets**: sops-nix or agenix before the first one. Never inline —
   `/nix/store` is world-readable.
 - **fish**: aliases are in `modules/home/shell/fish.nix`. The Arch `conf.d/`
