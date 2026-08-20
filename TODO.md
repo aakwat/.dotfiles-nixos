@@ -70,6 +70,7 @@ A saved state wins over `DEFAULT`, so clear it once to pick up
 ```sh
 loginctl lock-session      # hyprlock must let you back in (PAM)
 resolvectl status          # expect DNSOverTLS=yes, DNSSEC=allow-downgrade
+protonvpn-app              # manual connect only; nothing starts at boot
 ```
 
 - Ctrl+Space toggles the Myanmar (`mm`) keyboard layout
@@ -105,6 +106,12 @@ done
   PATH logic (sdkman, fnm, pnpm) is not carried over. No direnv by choice —
   run `nix develop` in a project when you want its toolchain, `exit` when
   you don't.
+- **ProtonVPN + reverse-path filtering**: `checkReversePath` defaults to
+  `true` and `security.nix` sets `net.ipv4.conf.all.rp_filter = 1`. That is
+  RFC 3704 anti-spoofing and the usual reason a WireGuard VPN connects but
+  routes nothing. If Proton breaks, the fix is one line in `network.nix`:
+  `networking.firewall.checkReversePath = "loose";` — not applied by default
+  because it weakens anti-spoofing and OpenVPN is unaffected.
 - **`backupFileExtension = "hm-bak"`** in `flake.nix` silently renames
   colliding files. With `force-clean-config` around, failing loudly may be
   better.
