@@ -106,12 +106,20 @@ done
   PATH logic (sdkman, fnm, pnpm) is not carried over. No direnv by choice —
   run `nix develop` in a project when you want its toolchain, `exit` when
   you don't.
-- **ProtonVPN + reverse-path filtering**: `checkReversePath` defaults to
-  `true` and `security.nix` sets `net.ipv4.conf.all.rp_filter = 1`. That is
-  RFC 3704 anti-spoofing and the usual reason a WireGuard VPN connects but
-  routes nothing. If Proton breaks, the fix is one line in `network.nix`:
-  `networking.firewall.checkReversePath = "loose";` — not applied by default
-  because it weakens anti-spoofing and OpenVPN is unaffected.
+- **ProtonVPN + reverse-path filtering**: RFC 3704 anti-spoofing is on in
+  two independent places — `networking.firewall.checkReversePath` (nftables,
+  defaults `true`) and `net.ipv4.conf.all.rp_filter = 1` in `security.nix`
+  (kernel, per-interface). A VPN routes replies through the tunnel while the
+  server's own packets still arrive on wlan0, so strict mode drops them: the
+  tunnel connects and then routes nothing. Loosening only one is not enough:
+
+  ```nix
+  networking.firewall.checkReversePath = "loose";
+  boot.kernel.sysctl."net.ipv4.conf.all.rp_filter" = 2;   # 2 = loose
+  ```
+
+  Not applied by default — it weakens anti-spoofing, and OpenVPN is
+  unaffected. Test first.
 - **`backupFileExtension = "hm-bak"`** in `flake.nix` silently renames
   colliding files. With `force-clean-config` around, failing loudly may be
   better.
