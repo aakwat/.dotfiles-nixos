@@ -8,7 +8,6 @@
     wget
     curl
 
-    xwayland-satellite # niri session
     hyprpolkitagent
 
     ffmpegthumbnailer # loaded by services.tumbler

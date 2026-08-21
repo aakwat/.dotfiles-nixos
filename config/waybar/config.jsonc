@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "modules-left": [
-    "niri/workspaces",
+    "dwl/tags",
     "custom/cpucat",
     "group/media"
   ],
@@ -18,7 +18,7 @@
     "cpu",
     "memory"
   ],
-  "niri/window": {
+  "dwl/window": {
     "max-length": 50
   },
   "battery": {
@@ -60,19 +60,19 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "kitty -e bluetuith"
+    "on-click": "foot -e bluetuith"
   },
   "cpu": {
     "interval": 10,
     "format": "  {}%",
     "max-length": 10,
-    "on-click": "kitty --title btop -e btop"
+    "on-click": "foot -T btop -e btop"
   },
   "memory": {
     "interval": 30,
     "format": "  {percentage}%",
     "tooltip-format": "{used:0.1f}G/{total:0.1f}G used",
-    "on-click": "kitty --title htop -e htop"
+    "on-click": "foot -T htop -e htop"
   },
   "backlight": {
     "format": "{icon}  {percent}%",
@@ -86,12 +86,12 @@
     "on-scroll-down": "brightnessctl set 5%-",
     "tooltip": false
   },
+  // TODO: mango exposes no layout query yet. Toggle stays Ctrl+Space (xkb).
   "custom/keyboard": {
-    "exec": "niri msg -j keyboard-layouts | jq -r '.names[.current_idx] | if test(\"US|English\") then \"US\" elif test(\"Burmese|mm\") then \"MM\" else .[0:2] end'",
-    "format": "  {}",
-    "interval": 2,
-    "tooltip": false,
-    "on-click": "niri msg action switch-layout next"
+    "exec": "echo us/mm",
+    "format": "  {}",
+    "interval": 3600,
+    "tooltip": false
   },
   "network": {
     "format": " ",
@@ -103,7 +103,7 @@
     "tooltip-format-ethernet": "{ifname}  ",
     "tooltip-format-disconnected": "󰖪 ",
     "max-length": 50,
-    "on-click": "kitty --title impala -e impala"
+    "on-click": "foot -T impala -e impala"
   },
   "clock": {
     "format": "{:%a, %d. %b %I:%M %p}",

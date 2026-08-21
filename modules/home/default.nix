@@ -6,7 +6,7 @@
 
     ./shell/fish.nix
     ./shell/starship.nix
-    ./shell/kitty.nix
+    ./shell/foot.nix
     ./shell/zoxide.nix
 
     ./desktop/theme.nix

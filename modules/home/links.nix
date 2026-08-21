@@ -6,11 +6,11 @@ let
 in
 {
   xdg.configFile = {
-    "niri".source = link "config/niri";
+    "mango".source = link "config/mango";
     "waybar".source = link "config/waybar";
     "mako".source = link "config/mako";
     "tofi".source = link "config/tofi";
-    "kitty".source = link "config/kitty";
+    "foot".source = link "config/foot";
     "hypr".source = link "config/hypr";
     "gtk-3.0".source = link "config/gtk-3.0";
     "gtk-4.0".source = link "config/gtk-4.0";

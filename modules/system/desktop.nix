@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
-  programs.niri.enable = true;
+  programs.mango.enable = true;
 
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd mango";
       user = "kwat";
     };
   };
@@ -23,7 +23,7 @@
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
-    # Burmese also works as a plain xkb layout — config/niri sets "us,mm".
+    # Burmese also works as a plain xkb layout — config/mango sets "us,mm".
     fcitx5.addons = [
       pkgs.fcitx5-gtk
       pkgs.fcitx5-m17n
