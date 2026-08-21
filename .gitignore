@@ -12,3 +12,9 @@ result-*
 *token*
 .env
 .env.*
+*.env
+*.keystore
+*.jks
+*.kdbx
+wg-*.conf
+gradle.properties
