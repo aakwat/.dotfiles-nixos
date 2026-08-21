@@ -1,6 +1,6 @@
 # dotfiles
 
-NixOS + home-manager. niri / fish / kitty / waybar. One host: `genius`.
+NixOS + home-manager. mango / fish / foot / waybar. One host: `genius`.
 
 App configs stay in their own formats under `config/` and are symlinked, not
 rewritten in Nix.
@@ -22,7 +22,7 @@ A flake only sees git-tracked files, so the `git add` is required.
 Clear anything already sitting where a symlink goes:
 
 ```sh
-cd ~/.config && rm -rf niri waybar mako tofi kitty hypr gtk-3.0 gtk-4.0 \
+cd ~/.config && rm -rf mango waybar mako tofi foot hypr gtk-3.0 gtk-4.0 \
   yazi zellij nvim starship.toml
 ```
 

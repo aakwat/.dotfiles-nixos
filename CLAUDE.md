@@ -64,12 +64,15 @@ tree, not `/nix/store`. So:
 
 `wallpapers/` is linked the same way, to `~/Pictures/Wallpapers`.
 
-These files are a *snapshot* of the author's Arch setup, not a live mirror —
+`config/mango` and `config/foot` have no Arch counterpart — they replaced the
+niri and kitty configs and are maintained here only.
+
+The rest are a *snapshot* of the author's Arch setup, not a live mirror —
 changes made on the Arch machine must be copied across. That is how a waybar
 module went missing once. To find drift:
 
 ```sh
-for d in niri waybar mako tofi kitty hypr gtk-3.0 gtk-4.0 yazi zellij nvim; do
+for d in waybar mako tofi hypr gtk-3.0 gtk-4.0 yazi zellij nvim; do
   diff -rq ~/.dotfiles/config/$d ~/.dotfiles-arch/.config/$d >/dev/null 2>&1 || echo "DRIFT: $d"
 done
 ```
@@ -78,7 +81,7 @@ KDL, JSONC, TOML and Lua stay in their own formats — porting them into Nix
 option syntax was tried and reverted.
 
 **A home-manager `programs.*` module that writes the same path as a symlink
-collides at activation.** `programs.kitty` and `programs.neovim` are therefore
+collides at activation.** `programs.foot` and `programs.neovim` are therefore
 not used; those packages come from `packages.nix` and their config from
 `config/`. Check for this before enabling any new `programs.*` module whose
 config directory exists in `config/`.
