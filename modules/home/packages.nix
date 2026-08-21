@@ -16,6 +16,7 @@
     dust
     btop
     htop
+    fastfetch
     jq
     zellij
     yazi
