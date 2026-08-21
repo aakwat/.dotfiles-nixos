@@ -9,7 +9,7 @@ CHOICE=$(printf "  Lock\n  Logout\n  Reboot\n  Shutdown\n󰒲  Suspend\n" \
 
 case "$CHOICE" in
     *Lock*)     command -v hyprlock >/dev/null && hyprlock || loginctl lock-session ;;
-    *Logout*)   mmsg -d quit ;;
+    *Logout*)   mmsg dispatch quit ;;
     *Reboot*)   systemctl reboot ;;
     *Shutdown*) systemctl poweroff ;;
     *Suspend*)  systemctl suspend ;;

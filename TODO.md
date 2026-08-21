@@ -120,6 +120,12 @@ done
 
   Not applied by default — it weakens anti-spoofing, and OpenVPN is
   unaffected. Test first.
+- **waybar has no workspace/window module under mango.** Mango does not speak
+  dwl-ipc; its wiki documents `mango/workspaces`, `mango/window`,
+  `mango/language`, which need a patched waybar — nixpkgs ships only stock
+  `waybar-0.15.0`, and `mangobar` is not packaged either. Options: custom
+  modules driven by `mmsg watch all-tags`, or package mangobar as a flake
+  input. Everything else on the bar works.
 - **`backupFileExtension = "hm-bak"`** in `flake.nix` silently renames
   colliding files. With `force-clean-config` around, failing loudly may be
   better.

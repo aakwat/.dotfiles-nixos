@@ -1,7 +1,6 @@
 {
   "layer": "top",
   "modules-left": [
-    "dwl/tags",
     "custom/cpucat",
     "group/media"
   ],
@@ -18,9 +17,6 @@
     "cpu",
     "memory"
   ],
-  "dwl/window": {
-    "max-length": 50
-  },
   "battery": {
     "interval": 60,
     "format": "{capacity}% {icon}",
@@ -86,11 +82,10 @@
     "on-scroll-down": "brightnessctl set 5%-",
     "tooltip": false
   },
-  // TODO: mango exposes no layout query yet. Toggle stays Ctrl+Space (xkb).
   "custom/keyboard": {
-    "exec": "echo us/mm",
+    "exec": "mmsg get keyboardlayout",
     "format": "  {}",
-    "interval": 3600,
+    "interval": 2,
     "tooltip": false
   },
   "network": {
