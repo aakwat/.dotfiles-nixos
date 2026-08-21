@@ -29,8 +29,9 @@ Should be a few dozen. If it is 0 or missing, nothing below will work — go
 back to step 1 and read the activation error.
 
 ```sh
-for c in waybar mako tofi cliphist hypridle hyprlock brightnessctl playerctl \
-         cava swappy awww nm-applet impala bluetuith zellij yazi fd eza bat; do
+for c in mango mmsg foot waybar mako tofi cliphist hypridle hyprlock \
+         brightnessctl playerctl cava swappy awww nm-applet impala \
+         bluetuith zellij yazi fd eza bat; do
   command -v $c >/dev/null || echo "MISSING: $c"
 done
 ```
@@ -74,7 +75,7 @@ protonvpn-app              # manual connect only; nothing starts at boot
 ```
 
 - Ctrl+Space toggles the Myanmar (`mm`) keyboard layout
-- Mod+Space opens tofi, Mod+Return kitty, Mod+B librewolf
+- Mod+Space opens tofi, Mod+Return foot, Mod+B librewolf
 - waybar: click wifi for `impala`, bluetooth for `bluetuith`
 
 ## 6. Clean up the old setup
@@ -88,10 +89,11 @@ sudo nix-collect-garbage -d
 
 `config/` is a snapshot of the Arch machine, not a live mirror. After changing
 anything there, copy it across — this is how the waybar cpucat module and the
-real LazyVim config went missing.
+real LazyVim config went missing. `config/mango` and `config/foot` have no
+Arch counterpart, so they are excluded.
 
 ```sh
-for d in niri waybar mako tofi kitty hypr gtk-3.0 gtk-4.0 yazi zellij nvim; do
+for d in waybar mako tofi hypr gtk-3.0 gtk-4.0 yazi zellij nvim; do
   diff -rq ~/.dotfiles/config/$d ~/.dotfiles-arch/.config/$d >/dev/null 2>&1 || echo "DRIFT: $d"
 done
 ```
