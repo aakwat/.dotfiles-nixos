@@ -29,7 +29,7 @@ Should be a few dozen. If it is 0 or missing, nothing below will work — go
 back to step 1 and read the activation error.
 
 ```sh
-for c in mango mmsg foot waybar mako tofi cliphist hypridle hyprlock \
+for c in niri foot waybar mako tofi cliphist hypridle hyprlock \
          brightnessctl playerctl cava swappy awww nm-applet impala \
          bluetuith zellij yazi fd eza bat; do
   command -v $c >/dev/null || echo "MISSING: $c"
@@ -89,11 +89,10 @@ sudo nix-collect-garbage -d
 
 `config/` is a snapshot of the Arch machine, not a live mirror. After changing
 anything there, copy it across — this is how the waybar cpucat module and the
-real LazyVim config went missing. `config/mango` and `config/foot` have no
-Arch counterpart, so they are excluded.
+real LazyVim config went missing.
 
 ```sh
-for d in waybar mako tofi hypr gtk-3.0 gtk-4.0 yazi zellij nvim; do
+for d in niri foot waybar mako tofi hypr gtk-3.0 gtk-4.0 yazi zellij nvim; do
   diff -rq ~/.dotfiles/config/$d ~/.dotfiles-arch/.config/$d >/dev/null 2>&1 || echo "DRIFT: $d"
 done
 ```
@@ -122,12 +121,6 @@ done
 
   Not applied by default — it weakens anti-spoofing, and OpenVPN is
   unaffected. Test first.
-- **waybar has no workspace/window module under mango.** Mango does not speak
-  dwl-ipc; its wiki documents `mango/workspaces`, `mango/window`,
-  `mango/language`, which need a patched waybar — nixpkgs ships only stock
-  `waybar-0.15.0`, and `mangobar` is not packaged either. Options: custom
-  modules driven by `mmsg watch all-tags`, or package mangobar as a flake
-  input. Everything else on the bar works.
 - **`backupFileExtension = "hm-bak"`** in `flake.nix` silently renames
   colliding files. With `force-clean-config` around, failing loudly may be
   better.

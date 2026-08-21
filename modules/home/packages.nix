@@ -23,7 +23,7 @@
     gnupg
     age
 
-    # wayland session — what config/mango spawns or binds
+    # wayland session — what config/niri/config.kdl spawns or binds
     waybar
     mako
     tofi

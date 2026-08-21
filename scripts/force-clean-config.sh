@@ -3,7 +3,7 @@
 # Symlinks are never touched. No backups - run before the first rebuild.
 set -uo pipefail
 
-MANAGED=(mango waybar mako tofi foot hypr gtk-3.0 gtk-4.0 yazi zellij nvim starship.toml)
+MANAGED=(niri waybar mako tofi foot hypr gtk-3.0 gtk-4.0 yazi zellij nvim starship.toml)
 
 removed=0
 for d in "${MANAGED[@]}"; do

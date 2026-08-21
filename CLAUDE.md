@@ -69,7 +69,7 @@ changes made on the Arch machine must be copied across. That is how a waybar
 module went missing once. To find drift:
 
 ```sh
-for d in mango foot waybar mako tofi hypr gtk-3.0 gtk-4.0 yazi zellij nvim; do
+for d in niri foot waybar mako tofi hypr gtk-3.0 gtk-4.0 yazi zellij nvim; do
   diff -rq ~/.dotfiles/config/$d ~/.dotfiles-arch/.config/$d >/dev/null 2>&1 || echo "DRIFT: $d"
 done
 ```

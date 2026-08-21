@@ -1,6 +1,7 @@
 {
   "layer": "top",
   "modules-left": [
+    "niri/workspaces",
     "custom/cpucat",
     "group/media"
   ],
@@ -17,6 +18,9 @@
     "cpu",
     "memory"
   ],
+  "niri/window": {
+    "max-length": 50
+  },
   "battery": {
     "interval": 60,
     "format": "{capacity}% {icon}",
@@ -56,19 +60,19 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "foot -e bluetuith"
+    "on-click": "foot bluetuith"
   },
   "cpu": {
     "interval": 10,
     "format": "  {}%",
     "max-length": 10,
-    "on-click": "foot -T btop -e btop"
+    "on-click": "foot -T btop btop"
   },
   "memory": {
     "interval": 30,
     "format": "  {percentage}%",
     "tooltip-format": "{used:0.1f}G/{total:0.1f}G used",
-    "on-click": "foot -T htop -e htop"
+    "on-click": "foot -T htop htop"
   },
   "backlight": {
     "format": "{icon}  {percent}%",
@@ -83,10 +87,11 @@
     "tooltip": false
   },
   "custom/keyboard": {
-    "exec": "mmsg get keyboardlayout",
-    "format": "  {}",
+    "exec": "niri msg -j keyboard-layouts | jq -r '.names[.current_idx] | if test(\"US|English\") then \"US\" elif test(\"Burmese|mm\") then \"MM\" else .[0:2] end'",
+    "format": "  {}",
     "interval": 2,
-    "tooltip": false
+    "tooltip": false,
+    "on-click": "niri msg action switch-layout next"
   },
   "network": {
     "format": " ",
@@ -98,7 +103,7 @@
     "tooltip-format-ethernet": "{ifname}  ",
     "tooltip-format-disconnected": "󰖪 ",
     "max-length": 50,
-    "on-click": "foot -T impala -e impala"
+    "on-click": "foot -T impala impala"
   },
   "clock": {
     "format": "{:%a, %d. %b %I:%M %p}",
