@@ -64,15 +64,12 @@ tree, not `/nix/store`. So:
 
 `wallpapers/` is linked the same way, to `~/Pictures/Wallpapers`.
 
-`config/mango` and `config/foot` have no Arch counterpart — they replaced the
-niri and kitty configs and are maintained here only.
-
-The rest are a *snapshot* of the author's Arch setup, not a live mirror —
+These files are a *snapshot* of the author's Arch setup, not a live mirror —
 changes made on the Arch machine must be copied across. That is how a waybar
 module went missing once. To find drift:
 
 ```sh
-for d in waybar mako tofi hypr gtk-3.0 gtk-4.0 yazi zellij nvim; do
+for d in mango foot waybar mako tofi hypr gtk-3.0 gtk-4.0 yazi zellij nvim; do
   diff -rq ~/.dotfiles/config/$d ~/.dotfiles-arch/.config/$d >/dev/null 2>&1 || echo "DRIFT: $d"
 done
 ```

@@ -8,6 +8,7 @@
     wget
     curl
 
+    xwayland-satellite # mango autostart launches it
     hyprpolkitagent
 
     ffmpegthumbnailer # loaded by services.tumbler
